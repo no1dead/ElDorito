@@ -30,6 +30,14 @@ set(SOURCE_FILES
     src/Console/KeyboardHook.hpp
     src/Console/Queue.hpp
     src/Console/Queue.cpp
+    src/Menu/Callbacks.cpp
+    src/Menu/Callbacks.h
+    src/Menu/DirectXHook.cpp
+    src/Menu/DirectXHook.h
+    src/Menu/js_delegate.h
+    src/Menu/MethodDispatcher.cpp
+    src/Menu/MethodDispatcher.h
+    src/Menu/Settings.h
     src/Modules/ModuleBase.cpp
     src/Modules/ModuleBase.hpp
     src/Modules/ModuleCamera.cpp
@@ -106,11 +114,13 @@ set(SOURCE_FILES
 include_directories($ENV{DXSDK_DIR}/Include)
 include_directories(${CMAKE_SOURCE_DIR}/libs/detours/include)
 include_directories(${CMAKE_SOURCE_DIR}/libs/openssl-1.0.2c/include)
+include_directories(${CMAKE_SOURCE_DIR}/libs/awesomium/include)
 
 # Library directories
 link_directories($ENV{DXSDK_DIR}/Lib/x86)
 link_directories(${CMAKE_SOURCE_DIR}/libs/detours/lib.X86)
 link_directories(${CMAKE_SOURCE_DIR}/libs/openssl-1.0.2c/lib)
+link_directories(${CMAKE_SOURCE_DIR}/libs/awesomium/lib)
 
 # Generate DLL from source files
 add_library(ElDorito SHARED ${SOURCE_FILES})
@@ -148,6 +158,7 @@ target_link_libraries(ElDorito Version)
 target_link_libraries(ElDorito ws2_32)
 target_link_libraries(ElDorito detours)
 target_link_libraries(ElDorito libeay32MT)
+target_link_libraries(ElDorito awesomium)
 
 # Rename output to mtndew
 set_target_properties(ElDorito PROPERTIES OUTPUT_NAME "mtndew")
