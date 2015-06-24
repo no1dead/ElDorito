@@ -1,5 +1,6 @@
 #include "ElDorito.hpp"
 #include "Console/GameConsole.hpp"
+#include "Menu/Menu.h"
 #include "DirectXHook.hpp"
 
 #include <iostream>
@@ -105,6 +106,7 @@ void ElDorito::Tick(const std::chrono::duration<double>& DeltaTime)
 			consoleLoaded = true;
 			DirectXHook::hookDirectX();
 			GameConsole::Instance(); // initialize console
+			Menu::Instance(); // initialize menu
 		}
 	}
 

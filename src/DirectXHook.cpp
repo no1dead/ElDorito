@@ -1,6 +1,7 @@
 #include "DirectXHook.hpp"
 #include "Console/GameConsole.hpp"
 #include <detours.h>
+#include "Menu/Menu.h"
 
 uint32_t* DirectXHook::horizontalRes = 0;
 uint32_t* DirectXHook::verticalRes = 0;
@@ -13,6 +14,7 @@ HRESULT(__stdcall * DirectXHook::origEndScenePtr)(LPDIRECT3DDEVICE9) = 0;
 HRESULT __stdcall DirectXHook::hookedEndScene(LPDIRECT3DDEVICE9 device)
 {
 	DirectXHook::pDevice = device;
+	Menu::Instance().drawMenu(device);
 	DirectXHook::drawChatInterface();
 	return (*DirectXHook::origEndScenePtr)(device);
 }
