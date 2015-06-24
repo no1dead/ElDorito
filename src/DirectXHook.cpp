@@ -1,7 +1,7 @@
 #include "DirectXHook.hpp"
 #include "Console/GameConsole.hpp"
 #include <detours.h>
-#include "Menu/Menu.h"
+#include "Menu/Menu.hpp"
 
 uint32_t* DirectXHook::horizontalRes = 0;
 uint32_t* DirectXHook::verticalRes = 0;
